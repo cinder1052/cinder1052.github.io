@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>51视频-51视频在线观看_51视频网页版入口与内容分区</title>
+<meta name="description" content="51视频主题首页，提供51视频网页版入口说明、内容分区导航、播放与画质偏好设置、常见问题解答，帮助访问者快速找到想看的视频并顺畅使用51视频。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1420'/%3E%3Cpath d='M25 19l22 13-22 13z' fill='%23ff5a3c'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0f1420;
+  --bg-soft:#161d2c;
+  --card:#1b2333;
+  --line:#2a3446;
+  --text:#e8edf6;
+  --muted:#9aa7bd;
+  --accent:#ff5a3c;
+  --accent-soft:rgba(255,90,60,.14);
+  --radius:14px;
+  --maxw:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.75;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(15,20,32,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;gap:24px;
+  height:64px;
+}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-mark{
+  width:34px;height:34px;border-radius:9px;
+  background:var(--accent);
+  display:grid;place-items:center;
+  box-shadow:0 4px 14px rgba(255,90,60,.35);
+}
+.logo-mark svg{width:16px;height:16px}
+.logo-text{font-size:18px;font-weight:700;letter-spacing:.5px;white-space:nowrap}
+.nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.nav a{
+  font-size:14px;color:var(--muted);
+  padding:7px 12px;border-radius:8px;
+  transition:.2s;
+}
+.nav a:hover{color:var(--text);background:var(--bg-soft)}
+.nav a.primary{
+  color:#fff;background:var(--accent);
+  font-weight:600;
+}
+.nav a.primary:hover{background:#ff6f54}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  padding:56px 0 44px;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(560px 300px at 12% 0%,rgba(255,90,60,.16),transparent 70%),
+    radial-gradient(500px 320px at 88% 20%,rgba(58,120,255,.12),transparent 70%);
+  pointer-events:none;
+}
+.hero-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:44px;
+  align-items:center;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;color:var(--accent);
+  background:var(--accent-soft);
+  border:1px solid rgba(255,90,60,.3);
+  padding:5px 12px;border-radius:999px;
+  margin-bottom:18px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+h1{
+  font-size:clamp(30px,4.4vw,46px);
+  line-height:1.18;
+  font-weight:800;
+  letter-spacing:.5px;
+  margin-bottom:16px;
+}
+h1 .hl{
+  background:linear-gradient(90deg,#ff5a3c,#ff9a3c);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+}
+.hero-lead{
+  color:var(--muted);
+  font-size:16px;
+  max-width:540px;
+  margin-bottom:26px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:15px;font-weight:600;
+  padding:12px 22px;border-radius:10px;
+  transition:.2s;
+}
+.btn-main{background:var(--accent);color:#fff}
+.btn-main:hover{background:#ff6f54;transform:translateY(-1px)}
+.btn-ghost{
+  border:1px solid var(--line);
+  color:var(--text);
+  background:var(--bg-soft);
+}
+.btn-ghost:hover{border-color:#3c4a63}
+.btn[disabled],.btn.disabled{
+  opacity:.65;pointer-events:none;
+}
+
+/* hero visual */
+.hero-visual{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 24px 60px -30px rgba(0,0,0,.9);
+}
+.screen{
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  aspect-ratio:16/10;
+  background:linear-gradient(150deg,#25304a,#151b28 65%);
+  display:grid;place-items:center;
+}
+.screen::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55));
+}
+.play-ring{
+  position:relative;z-index:2;
+  width:66px;height:66px;border-radius:50%;
+  background:rgba(255,90,60,.95);
+  display:grid;place-items:center;
+  box-shadow:0 0 0 10px rgba(255,90,60,.14);
+}
+.play-ring svg{width:22px;height:22px;margin-left:3px}
+.screen-meta{
+  position:absolute;left:14px;bottom:12px;z-index:2;
+  font-size:12px;color:#cfd8e6;letter-spacing:.5px;
+}
+.hero-strip{
+  display:flex;gap:8px;margin-top:14px;
+}
+.hero-strip span{
+  flex:1;height:6px;border-radius:99px;background:#2a3446;
+}
+.hero-strip span:first-child{background:var(--accent)}
+
+/* ---------- section base ---------- */
+section{padding:56px 0}
+.section-head{margin-bottom:30px;max-width:720px}
+.section-tag{
+  font-size:12px;letter-spacing:2px;
+  color:var(--accent);font-weight:700;
+  margin-bottom:8px;
+}
+h2{
+  font-size:clamp(22px,2.6vw,28px);
+  font-weight:700;
+  line-height:1.3;
+  margin-bottom:10px;
+}
+.section-desc{color:var(--muted);font-size:15px}
+
+/* ---------- category cards ---------- */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:22px;
+  transition:.22s;
+}
+.card:hover{
+  border-color:#3c4a63;
+  transform:translateY(-3px);
+}
+.card-icon{
+  width:42px;height:42px;border-radius:11px;
+  background:var(--accent-soft);
+  display:grid;place-items:center;
+  margin-bottom:14px;
+}
+.card-icon svg{width:20px;height:20px;stroke:var(--accent)}
+.card h3{font-size:16px;font-weight:700;margin-bottom:7px}
+.card p{font-size:14px;color:var(--muted);line-height:1.7}
+.card .more{
+  display:inline-block;margin-top:12px;
+  font-size:13px;color:var(--accent);font-weight:600;
+}
+
+/* ---------- filter ---------- */
+.filters{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-bottom:26px;
+}
+.chip{
+  font-size:13.5px;
+  padding:8px 16px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--bg-soft);
+  color:var(--muted);
+  cursor:pointer;
+  transition:.18s;
+  font-family:inherit;
+}
+.chip:hover{color:var(--text);border-color:#3c4a63}
+.chip.active{
+  background:var(--accent);color:#fff;
+  border-color:var(--accent);
+  font-weight:600;
+}
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.v-item{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  transition:.22s;
+}
+.v-item:hover{transform:translateY(-3px);border-color:#3c4a63}
+.v-thumb{
+  aspect-ratio:16/9;
+  background:linear-gradient(140deg,#2b3752,#161c29);
+  position:relative;
+  display:grid;place-items:center;
+}
+.v-thumb svg{width:34px;height:34px;opacity:.85}
+.v-dur{
+  position:absolute;right:9px;bottom:9px;
+  font-size:11px;
+  background:rgba(0,0,0,.65);
+  color:#fff;padding:2px 7px;border-radius:5px;
+}
+.v-body{padding:14px 16px 16px}
+.v-body h4{font-size:14.5px;font-weight:600;margin-bottom:6px;line-height:1.5}
+.v-body p{font-size:12.5px;color:var(--muted)}
+.v-body .tagline{
+  display:inline-block;font-size:11px;
+  color:var(--accent);
+  background:var(--accent-soft);
+  padding:1px 8px;border-radius:5px;
+  margin-top:9px;
+}
+.empty-tip{
+  display:none;
+  padding:28px;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+  border:1px dashed var(--line);
+  border-radius:var(--radius);
+  margin-top:18px;
+}
+.empty-tip.show{display:block}
+
+/* ---------- feature list ---------- */
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:42px;
+  align-items:start;
+}
+.feature-list{list-style:none;display:grid;gap:16px}
+.feature-list li{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px 20px;
+  display:flex;gap:14px;
+}
+.feature-list .num{
+  flex-shrink:0;
+  width:28px;height:28px;border-radius:8px;
+  background:var(--accent-soft);
+  color:var(--accent);
+  font-size:13px;font-weight:700;
+  display:grid;place-items:center;
+}
+.feature-list h4{font-size:15px;font-weight:700;margin-bottom:4px}
+.feature-list p{font-size:13.5px;color:var(--muted)}
+
+/* ---------- note box ---------- */
+.note{
+  margin-top:22px;
+  border-left:3px solid var(--accent);
+  background:var(--bg-soft);
+  border-radius:0 10px 10px 0;
+  padding:16px 20px;
+  font-size:14px;
+  color:var(--muted);
+}
+.note strong{color:var(--text)}
+
+/* ---------- faq ---------- */
+.faq{display:grid;gap:12px;max-width:820px}
+details{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:16px 20px;
+}
+details[open]{border-color:#3c4a63}
+summary{
+  cursor:pointer;
+  font-size:15px;font-weight:600;
+  list-style:none;
+  display:flex;justify-content:space-between;gap:14px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"+";
+  color:var(--accent);
+  font-weight:700;
+  flex-shrink:0;
+}
+details[open] summary::after{content:"–"}
+details p{
+  margin-top:10px;
+  font-size:14px;color:var(--muted);
+}
+
+/* ---------- cta ---------- */
+.cta{
+  background:linear-gradient(120deg,#1d2536,#171e2c);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:40px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.cta h2{margin-bottom:8px}
+.cta p{color:var(--muted);font-size:14.5px;max-width:520px}
+.cta .hero-actions{flex-shrink:0}
+
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--line);
+  padding:38px 0 44px;
+  margin-top:20px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:34px;
+  margin-bottom:26px;
+}
+.footer-brand p{
+  font-size:13.5px;color:var(--muted);
+  margin-top:12px;max-width:340px;
+}
+.footer-col h5{
+  font-size:13px;font-weight:700;
+  letter-spacing:1px;margin-bottom:12px;
+  color:var(--text);
+}
+.footer-col a{
+  display:block;
+  font-size:13.5px;color:var(--muted);
+  padding:3px 0;transition:.18s;
+}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{
+  border-top:1px solid var(--line);
+  padding-top:20px;
+  display:flex;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;
+  font-size:12.5px;color:#6f7c92;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-visual{max-width:520px}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .video-grid{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr;gap:26px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .header-inner{height:auto;padding:12px 0;flex-wrap:wrap;gap:10px}
+  .nav{margin-left:0;width:100%;gap:4px}
+  .nav a{padding:6px 10px;font-size:13px}
+  .hero{padding:38px 0 34px}
+  .hero-lead{font-size:15px}
+  .cards,.video-grid{grid-template-columns:1fr}
+  .cta{padding:26px;border-radius:16px}
+  .footer-grid{grid-template-columns:1fr}
+  section{padding:42px 0}
+  .btn{padding:11px 18px;font-size:14px}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="51视频 首页">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+      </span>
+      <span class="logo-text">51视频</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#zones">内容分区</a>
+      <a href="#pick">热门浏览</a>
+      <a href="#play">播放设置</a>
+      <a href="#faq">常见问题</a>
+      <a class="primary" href="#pick">开始观看</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>网页版入口 · 内容分区导航</span>
+        <h1 id="hero-title">51视频</h1>
+        <p class="hero-lead">
+          51视频是一个以短视频与专题片段为主的视频浏览站点。本页把常用入口、内容分区与播放偏好集中在一处，
+          打开即可按分类找到想看的内容，无需在多个页面之间来回跳转。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-main" href="#pick">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+            进入内容分区
+          </a>
+          <a class="btn btn-ghost" href="#play">查看播放设置</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="screen">
+          <span class="play-ring">
+            <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+          </span>
+          <span class="screen-meta">51视频 · 网页播放界面示意</span>
+        </div>
+        <div class="hero-strip"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONES -->
+  <section id="zones" aria-labelledby="zones-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">内容分区</div>
+        <h2 id="zones-title">51视频的四类常见内容</h2>
+        <p class="section-desc">按内容形态划分，方便你根据当前想看的东西直接进入对应分区，而不是在首页反复翻页。</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg>
+          </div>
+          <h3>短片速览</h3>
+          <p>时长较短的片段，适合在碎片时间快速浏览。列表默认按更新时间排列，打开即可连续观看。</p>
+          <a class="more" href="#pick">浏览短片 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h13"/></svg>
+          </div>
+          <h3>专题合集</h3>
+          <p>围绕同一主题聚合的多个视频，按集数或顺序排列，适合从头到尾完整看完一条线索。</p>
+          <a class="more" href="#pick">浏览合集 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5v8l-7 5-7-5z"/></svg>
+          </div>
+          <h3>生活记录</h3>
+          <p>日常向的拍摄内容，节奏舒缓。51视频在这类分区中保留了较完整的原始段落，便于连贯观看。</p>
+          <a class="more" href="#pick">浏览记录 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </div>
+          <h3>长片段回看</h3>
+          <p>时间跨度较长的内容，支持拖动进度条定位。适合中途离开后回到上次的位置继续看。</p>
+          <a class="more" href="#play">了解播放 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/></svg>
+          </div>
+          <h3>热度榜单</h3>
+          <p>按近期浏览与播放情况汇总的列表，变化较快。把它当作发现入口，比逐页翻找更省时间。</p>
+          <a class="more" href="#pick">查看榜单 →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11"/></svg>
+          </div>
+          <h3>分类索引</h3>
+          <p>按题材与形式细分的小类目录，条目较多时可用顶部的筛选按钮快速缩小范围。</p>
+          <a class="more" href="#pick">使用筛选 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PICK + FILTER -->
+  <section id="pick" aria-labelledby="pick-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">热门浏览</div>
+        <h2 id="pick-title">从近期更新中挑选</h2>
+        <p class="section-desc">下面列出若干条目作为浏览示例。点击筛选按钮可即时缩小范围，全部条目内容均直接呈现在本页。</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="内容筛选">
+        <button class="chip active" type="button" data-filter="all">全部</button>
+        <button class="chip" type="button" data-filter="short">短片</button>
+        <button class="chip" type="button" data-filter="series">合集</button>
+        <button class="chip" type="button" data-filter="life">生活</button>
+        <button class="chip" type="button" data-filter="long">长片段</button>
+      </div>
+
+      <div class="video-grid" id="videoGrid">
+        <article class="v-item" data-cat="short">
+          <div class="v-thumb">
+            <svg viewBox="0 0 24 24" fill="#ff5a3c"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+            <span class="v-dur">03:12</span>
+          </div>
+          <div class="v-body">
+            <h4>一分钟看懂本周更新节奏</h4>
+            <p>短片 · 快速浏览</p>
+            <span class="tagline">短片</span>
+          </div>
+        </article>
+
+        <article class="v-item" data-cat="series">
+          <div class="v-thumb">
+            <svg viewBox="0 0 24 24" fill="#ff5a3c"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+            <span class="v-dur">12 集</span>
+          </div>
+          <div class="v-body">
+            <h4>城市夜行合集 · 按顺序观看</h4>
+            <p>合集 · 连续播放</p>
+            <span class="tagline">合集</span>
+          </div>
+        </article>
+
+        <article class="v-item" data-cat="life">
+          <div class="v-thumb">
+            <svg viewBox="0 0 24 24" fill="#ff5a3c"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+            <span class="v-dur">08:40</span>
+          </div>
+          <div class="v-body">
+            <h4>周末厨房：一次完整的备菜记录</h4>
+            <p>生活 · 原始段落</p>
+            <span class="tagline">生活</span>
+          </div>
+        </article>
+
+        <article class="v-item" data-cat="long">
+          <div class="v-thumb">
+            <svg viewBox="0 0 24 24" fill="#ff5a3c"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+            <span class="v-dur">46:05</span>
+          </div>
+          <div class="v-body">
+            <h4>长片段回看：完整访谈段落</h4>
+            <p>长片段 · 支持进度定位</p>
+            <span class="tagline">长片段</span>
+          </div>
+        </article>
+
+        <article class="v-item" data-cat="short">
+          <div class="v-thumb">
+            <svg viewBox="0 0 24 24" fill="#ff5a3c"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+            <span class="v-dur">01:28</span>
+          </div>
+          <div class="v-body">
+            <h4>三分钟速览：这周值得回看的片段</h4>
+            <p>短片 · 精选</p>
+            <span class="tagline">短片</span>
+          </div>
+        </article>
+
+        <article class="v-item" data-cat="life">
+          <div class="v-thumb">
+            <svg viewBox="0 0 24 24" fill="#ff5a3c"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+            <span class="v-dur">15:22</span>
+          </div>
+          <div class="v-body">
+            <h4>阳台改造记录：从清空到收尾</h4>
+            <p>生活 · 过程记录</p>
+            <span class="tagline">生活</span>
+          </div>
+        </article>
+      </div>
+
+      <p class="empty-tip" id="emptyTip">该分类下暂无示例条目，可切换其他筛选条件继续浏览。</p>
+    </div>
+  </section>
+
+  <!-- PLAY SETTINGS -->
+  <section id="play" aria-labelledby="play-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">播放设置</div>
+        <h2 id="play-title">让51视频的观看过程更顺手</h2>
+        <p class="section-desc">下面几项是网页播放时最常见的调整项，按需选择即可，不涉及账号与付费。</p>
+      </div>
+      <div class="split">
+        <ul class="feature-list">
+          <li>
+            <span class="num">01</span>
+            <div>
+              <h4>画质与清晰度</h4>
+              <p>播放器右下角可切换清晰度。网络条件一般时先选较低档位，减少缓冲等待。</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">02</span>
+            <div>
+              <h4>进度记忆</h4>
+              <p>长片段中途退出后，重新打开通常会回到上次观看的位置，具体以页面实际表现为准。</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">03</span>
+            <div>
+              <h4>全屏与横屏</h4>
+              <p>手机端点击全屏按钮后旋转设备即可横屏观看，退出全屏恢复竖屏布局。</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">04</span>
+            <div>
+              <h4>列表连续播放</h4>
+              <p>合集类内容支持按顺序连续播放，适合在通勤或休息时一次性看完一段线索。</p>
+            </div>
+          </li>
+        </ul>
+        <div>
+          <div class="note">
+            <strong>关于下载：</strong>部分访客会寻找离线保存的方式。当前页面仅作为浏览入口，
+            下载功能是否开放以站点实际提供的选项为准，本页不提供离线文件。
+          </div>
+          <div style="margin-top:18px">
+            <a class="btn btn-ghost disabled" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 12l5 5 5-5"/><path d="M5 20h14"/></svg>
+              下载
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">常见问题</div>
+        <h2 id="faq-title">关于51视频网页版的几个疑问</h2>
+        <p class="section-desc">整理访问时最常被问到的情况，答案尽量简短直接。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>51视频网页版需要安装客户端吗？</summary>
+          <p>不需要。用浏览器打开页面即可浏览内容分区并播放视频，手机与电脑均可访问，无需另装软件。</p>
+        </details>
+        <details>
+          <summary>为什么有些条目点开后加载较慢？</summary>
+          <p>加载速度主要受网络状况与视频本身码率影响。可先切换至较低清晰度，或稍等片刻再重试。</p>
+        </details>
+        <details>
+          <summary>筛选按钮会不会跳转到别的页面？</summary>
+          <p>不会。本页的筛选在当前页面内即时生效，只隐藏不匹配的条目，不会刷新或跳转。</p>
+        </details>
+        <details>
+          <summary>51视频的内容多久更新一次？</summary>
+          <p>更新频率因分区而异，短片类更新相对频繁，合集与长片段则以成组方式上线，具体以列表中显示的时间为准。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2 id="cta-title">选一个分区，开始看51视频</h2>
+          <p>如果你还不确定看什么，可以先从热度榜单或短片速览入手，再顺着合集继续往下看。</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-main" href="#pick">前往热门浏览</a>
+          <a class="btn btn-ghost" href="#zones">返回内容分区</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#top">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5.5l11 6.5-11 6.5z"/></svg>
+          </span>
+          <span class="logo-text">51视频</span>
+        </a>
+        <p>51视频主题首页，汇总内容分区、热门浏览与播放设置，帮助访问者更快找到想看的内容。</p>
+      </div>
+      <div class="footer-col">
+        <h5>页面导航</h5>
+        <a href="#zones">内容分区</a>
+        <a href="#pick">热门浏览</a>
+        <a href="#play">播放设置</a>
+        <a href="#faq">常见问题</a>
+      </div>
+      <div class="footer-col">
+        <h5>使用提示</h5>
+        <a href="#play">画质与清晰度</a>
+        <a href="#play">进度记忆</a>
+        <a href="#faq">加载较慢怎么办</a>
+        <a href="#pick">使用筛选</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 51视频 · 主题首页</span>
+      <span>内容以页面实际呈现为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var chips = document.querySelectorAll('.chip');
+  var items = document.querySelectorAll('#videoGrid .v-item');
+  var tip = document.getElementById('emptyTip');
+
+  function apply(cat){
+    var shown = 0;
+    items.forEach(function(el){
+      var match = (cat === 'all' || el.getAttribute('data-cat') === cat);
+      el.style.display = match ? '' : 'none';
+      if(match) shown++;
+    });
+    tip.classList.toggle('show', shown === 0);
+  }
+
+  chips.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      chips.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      apply(btn.getAttribute('data-filter'));
+    });
+  });
+
+  apply('all');
+})();
+</script>
+</body>
+  </html>
